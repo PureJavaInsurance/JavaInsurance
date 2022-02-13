@@ -9,16 +9,16 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class MyBatisConnectionFactory {
 	private static SqlSessionFactory sqlSessionFactory;
 
-	public MyBatisConnectionFactory() {
+	static {
         try {
-        	this.initalize();
+        	initalize();
         }
         catch (IOException iOException) {
             iOException.printStackTrace();
         }
 	}
 	
-	private void initalize() throws IOException {
+	private static void initalize() throws IOException {
 		String resource = "config.xml";
         Reader reader = Resources.getResourceAsReader(resource);
         if (sqlSessionFactory == null) {
