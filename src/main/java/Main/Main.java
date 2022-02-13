@@ -1,5 +1,7 @@
 package Main;
 
+import java.util.Scanner;
+
 import org.apache.ibatis.session.SqlSession;
 import Customer.Customer;
 import Employee.Employee;
@@ -21,6 +23,7 @@ public class Main {
 	}
 
 	private void initalize() {
+		
 		this.sqlSession = MyBatisConnectionFactory.getSqlSessionFactory().openSession();
 		this.instantiation();
 		this.setSqlSession();
@@ -42,6 +45,10 @@ public class Main {
 	}
 	
 	private void service() {
-		this.login.login();
+		Scanner sc = new Scanner(System.in);
+		System.out.println("input");
+		String id = sc.next();
+		String password = sc.next();
+		System.out.println(this.login.login(id, password));
 	}
 }
