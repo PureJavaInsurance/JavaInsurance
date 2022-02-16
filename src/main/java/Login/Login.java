@@ -3,16 +3,11 @@ package Login;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-
 import Customer.Customer;
 import Employee.Employee;
-import Global.Constants;
 
 public class Login {
 	
-	private SqlSession sqlSession;
-	private Customer customer;
-	private Employee employee;
 	private LoginDAO loginDAO;
 	
 	public Login() {
@@ -33,13 +28,7 @@ public class Login {
 		return this.loginDAO.getRoll(id);
 	}
 
-	public void associate(Customer customer, Employee employee) {
-		this.customer = customer;
-		this.employee = employee;
-	}
-
 	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
 		this.loginDAO.setSqlSession(sqlSession);
 	}
 }
