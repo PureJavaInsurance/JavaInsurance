@@ -1,20 +1,10 @@
 package Main;
 
-import java.util.Scanner;
-
-import org.apache.ibatis.session.SqlSession;
-import Customer.Customer;
-import Employee.Employee;
-import Factory.Factory;
-import Login.Login;
-import Mybatis.MyBatisConnectionFactory;
+import Home.Home;
 
 public class Main {
+	private Home home;
 	
-	private Login login;
-	private Customer customer;
-	private Employee employee;
-	private SqlSession sqlSession;
 
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -23,32 +13,26 @@ public class Main {
 	}
 
 	private void initalize() {
-		
-		this.sqlSession = MyBatisConnectionFactory.getSqlSessionFactory().openSession();
 		this.instantiation();
 		this.setSqlSession();
 		this.associate();
 	}
 
 	private void instantiation() {
-		this.login = new Login();
-		this.customer = new Customer();
-		this.employee = new Employee();
+		this.home = new Home();
+		this.home.instantiation();
+		
 	}
 	
 	private void setSqlSession() {
-		this.login.setSqlSession(this.sqlSession);
+		this.home.setSqlSession();
 	}
 
 	private void associate() {
-		this.login.associate(this.customer, this.employee);
+		this.home.associate();
 	}
 	
 	private void service() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("input");
-		String id = sc.next();
-		String password = sc.next();
-		System.out.println(this.login.login(id, password));
+		this.home.service();
 	}
 }

@@ -21,9 +21,7 @@ public class MyBatisConnectionFactory {
 	private static void initalize() throws IOException {
 		String resource = "config.xml";
         Reader reader = Resources.getResourceAsReader(resource);
-        if (sqlSessionFactory == null) {
-            sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        }
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 	}
 	
     public static SqlSessionFactory getSqlSessionFactory() {
